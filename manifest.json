@@ -1,0 +1,72 @@
+{
+  "name": "OmniConverter",
+  "short_name": "Omni",
+  "description": "OmniConverter is an easy and fast way to convert whatever you want, making your daily life simpler.",
+  "start_url": "https://peppy-griffin-ae8e6c.netlify.app/",
+  "display": "standalone",
+  "display_override": [
+    "standalone",
+    "minimal-ui",
+    "browser",
+    "fullscreen",
+    "window-controls-overlay"
+  ],
+  "protocol_handlers": [
+    {
+      "protocol": "web+omni",
+      "url": "https://peppy-griffin-ae8e6c.netlify.app/?q=%s"
+    }
+  ],
+  "lang": "en",
+  "dir": "ltr",
+  "theme_color": "#007bff",
+  "background_color": "#f5f5f5",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://peppy-griffin-ae8e6c.netlify.app/image-544bef4a-673a-4622-a093-e0392d22c070.AVIF",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://peppy-griffin-ae8e6c.netlify.app/image-544bef4a-673a-4622-a093-e0392d22c070.AVIF",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "https://peppy-griffin-ae8e6c.netlify.app/task_01kkr5rbchez4bq2c1dykx9hb1_1773559128_img_0.WEBP",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "description": "OmniConverter main screen showing length conversion options"
+    },
+    {
+      "src": "https://peppy-griffin-ae8e6c.netlify.app/task_01kkr5rbchez4bq2c1dykx9hb1_1773559128_img_1.WEBP",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "description": "Recent conversions and favorites feature"
+    }
+  ],
+  "categories": [
+    "utilities",
+    "productivity",
+    "tools"
+  ],
+  "iarc_rating_id": "ead4e4e6-5e4b-4e4b-9e4b-4e4be4e4be4b",
+  "prefer_related_applications": false,
+  "shortcuts": [
+    {
+      "name": "Length Converter",
+      "url": "https://peppy-griffin-ae8e6c.netlify.app/",
+      "description": "Quickly convert length units"
+    },
+    {
+      "name": "Recent Conversions",
+      "url": "https://peppy-griffin-ae8e6c.netlify.app/#recent",
+      "description": "View your recent conversions"
+    }
+  ]
+}
