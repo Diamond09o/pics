@@ -24,27 +24,27 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "https://github.com/Diamond09o/pics/blob/master/pics/image-544bef4a-673a-4622-a093-e0392d22c070.jpg",
+      "src": "https://raw.githubusercontent.com/Diamond09o/pics/master/pics/image-544bef4a-673a-4622-a093-e0392d22c070.jpg",
       "sizes": "512x512",
       "type": "image/jpeg",
       "purpose": "any maskable"
     },
     {
-      "src": "https://github.com/Diamond09o/pics/blob/master/pics/image-544bef4a-673a-4622-a093-e0392d22c070.jpg",
-      "sizes": "192x192",
+      "src": "https://raw.githubusercontent.com/Diamond09o/pics/master/pics/image-544bef4a-673a-4622-a093-e0392d22c070.jpg",
+      "sizes": "512x512",
       "type": "image/jpeg",
       "purpose": "any"
     }
   ],
   "screenshots": [
     {
-      "src": "https://github.com/Diamond09o/pics/blob/master/pics/task_01kkr5rbchez4bq2c1dykx9hb1_1773559128_img_0.webp",
+      "src": "https://raw.githubusercontent.com/Diamond09o/pics/master/pics/task_01kkr5rbchez4bq2c1dykx9hb1_1773559128_img_0.webp",
       "sizes": "1280x720",
       "type": "image/webp",
       "description": "OmniConverter main screen showing length conversion options"
     },
     {
-      "src": "https://github.com/Diamond09o/pics/blob/master/pics/task_01kkr5rbchez4bq2c1dykx9hb1_1773559128_img_1.webp",
+      "src": "https://raw.githubusercontent.com/Diamond09o/pics/master/pics/task_01kkr5rbchez4bq2c1dykx9hb1_1773559128_img_1.webp",
       "sizes": "1280x720",
       "type": "image/webp",
       "description": "Recent conversions and favorites feature"
