@@ -6,3 +6,10 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# IDE files
+.idea/
+
+# Generated files
+android-settings.json
+com.myapp.pwa.zip
