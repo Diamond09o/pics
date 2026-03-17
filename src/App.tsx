@@ -23,7 +23,8 @@ import {
   X,
   Menu,
   Languages,
-  Trash2
+  Trash2,
+  Lock
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { UnitCategory, Unit, Language, LANGUAGES, TRANSLATIONS, ConversionResult } from './types';
@@ -55,7 +56,7 @@ export default function App() {
     const saved = localStorage.getItem('favorites');
     return saved ? JSON.parse(saved) : [];
   });
-  const [view, setView] = useState<'main' | 'settings' | 'history' | 'favorites'>('main');
+  const [view, setView] = useState<'main' | 'settings' | 'history' | 'favorites' | 'privacy'>('main');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const t = (key: string) => TRANSLATIONS[lang]?.[key] || TRANSLATIONS['en'][key] || key;
@@ -317,6 +318,31 @@ export default function App() {
     </div>
   );
 
+  const renderPrivacy = () => (
+    <div className="p-4 space-y-6">
+      <div className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm">
+        <div className="flex items-center gap-4 mb-3">
+          <div className="w-12 h-12 bg-black rounded-2xl flex items-center justify-center text-white shadow-xl">
+            <Lock size={28} fill="white" />
+          </div>
+          <div>
+            <h2 className="text-xl font-black">Privacy Policy</h2>
+            <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">{t('title')}</p>
+          </div>
+        </div>
+        <p className="text-sm text-gray-600 leading-relaxed">
+          OmniConverter is a local-only web app. It does not collect or transmit your data—everything stays in your browser.
+        </p>
+        <p className="text-sm text-gray-600 leading-relaxed">
+          The app stores recent conversions and favorites in localStorage. No analytics, ads, or tracking scripts are included.
+        </p>
+        <p className="text-sm text-gray-600 leading-relaxed">
+          For the full policy, visit <a className="text-blue-600 hover:text-blue-800" href="/privacy.html">this page</a>.
+        </p>
+      </div>
+    </div>
+  );
+
   const renderSettings = () => (
     <div className="p-4 space-y-6">
       <div className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm mb-6">
@@ -352,6 +378,15 @@ export default function App() {
             </button>
           ))}
         </div>
+      </div>
+
+      <div className="pt-4 border-t border-gray-100">
+        <button
+          onClick={() => setView('privacy')}
+          className="w-full text-left text-sm text-blue-600 font-semibold hover:text-blue-800"
+        >
+          Privacy Policy
+        </button>
       </div>
     </div>
   );
@@ -459,6 +494,7 @@ export default function App() {
               {view === 'history' && renderHistory()}
               {view === 'settings' && renderSettings()}
               {view === 'favorites' && renderFavorites()}
+              {view === 'privacy' && renderPrivacy()}
             </motion.div>
           </AnimatePresence>
         </main>
