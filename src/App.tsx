@@ -337,7 +337,7 @@ export default function App() {
           The app stores recent conversions and favorites in localStorage. No analytics, ads, or tracking scripts are included.
         </p>
         <p className="text-sm text-gray-600 leading-relaxed">
-          For the full policy, visit <a className="text-blue-600 hover:text-blue-800" href="/privacy.html">this page</a>.
+          For the full policy, visit <a className="text-blue-600 hover:text-blue-800" href={`${import.meta.env.BASE_URL}privacy.html`}>this page</a>.
         </p>
       </div>
     </div>
@@ -352,7 +352,7 @@ export default function App() {
           </div>
           <div>
             <h2 className="text-xl font-black">{t('title')}</h2>
-            <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">v1.0.0</p>
+            <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">v1.0.0.1</p>
           </div>
         </div>
         <p className="text-sm text-gray-600 leading-relaxed">{t('description')}</p>
