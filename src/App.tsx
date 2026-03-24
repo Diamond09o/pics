@@ -49,12 +49,22 @@ export default function App() {
   const [toUnit, setToUnit] = useState<string>('');
   const [value, setValue] = useState<string>('1');
   const [recent, setRecent] = useState<ConversionResult[]>(() => {
-    const saved = localStorage.getItem('recent');
-    return saved ? JSON.parse(saved) : [];
+    try {
+      const saved = localStorage.getItem('recent');
+      return saved ? JSON.parse(saved) : [];
+    } catch (error) {
+      console.warn('Failed to parse recent conversions from localStorage:', error);
+      return [];
+    }
   });
   const [favorites, setFavorites] = useState<string[]>(() => {
-    const saved = localStorage.getItem('favorites');
-    return saved ? JSON.parse(saved) : [];
+    try {
+      const saved = localStorage.getItem('favorites');
+      return saved ? JSON.parse(saved) : [];
+    } catch (error) {
+      console.warn('Failed to parse favorites from localStorage:', error);
+      return [];
+    }
   });
   const [view, setView] = useState<'main' | 'settings' | 'history' | 'favorites' | 'privacy'>('main');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -63,60 +73,85 @@ export default function App() {
   const currentLang = LANGUAGES.find(l => l.code === lang) || LANGUAGES[0];
 
   useEffect(() => {
-    localStorage.setItem('lang', lang);
+    try {
+      localStorage.setItem('lang', lang);
+    } catch (error) {
+      console.warn('Failed to save language preference to localStorage:', error);
+    }
     document.documentElement.dir = currentLang.dir;
   }, [lang, currentLang]);
 
   useEffect(() => {
-    localStorage.setItem('recent', JSON.stringify(recent));
+    try {
+      localStorage.setItem('recent', JSON.stringify(recent));
+    } catch (error) {
+      console.warn('Failed to save recent conversions to localStorage:', error);
+    }
   }, [recent]);
 
   useEffect(() => {
-    localStorage.setItem('favorites', JSON.stringify(favorites));
+    try {
+      localStorage.setItem('favorites', JSON.stringify(favorites));
+    } catch (error) {
+      console.warn('Failed to save favorites to localStorage:', error);
+    }
   }, [favorites]);
 
   useEffect(() => {
     const units = UNITS[category];
-    setFromUnit(units[0].id);
-    setToUnit(units[1]?.id || units[0].id);
+    if (units && units.length > 0) {
+      setFromUnit(units[0].id);
+      setToUnit(units[1]?.id || units[0].id);
+    }
   }, [category]);
 
   const result = useMemo(() => {
-    const units = UNITS[category];
-    const from = units.find(u => u.id === fromUnit);
-    const to = units.find(u => u.id === toUnit);
-    const val = parseFloat(value);
+    try {
+      const units = UNITS[category];
+      if (!units || units.length === 0) return 0;
+      
+      const from = units.find(u => u.id === fromUnit);
+      const to = units.find(u => u.id === toUnit);
+      const val = parseFloat(value);
 
-    if (!from || !to || isNaN(val)) return 0;
+      if (!from || !to || isNaN(val)) return 0;
 
-    if (category === 'temperature') {
-      // Special handling for temperature
-      let baseVal = 0;
-      if (from.id === 'c') baseVal = val;
-      else if (from.id === 'f') baseVal = (val - 32) * (5/9);
-      else if (from.id === 'k') baseVal = val - 273.15;
+      if (category === 'temperature') {
+        // Special handling for temperature
+        let baseVal = 0;
+        if (from.id === 'c') baseVal = val;
+        else if (from.id === 'f') baseVal = (val - 32) * (5/9);
+        else if (from.id === 'k') baseVal = val - 273.15;
 
-      if (to.id === 'c') return baseVal;
-      else if (to.id === 'f') return baseVal * (9/5) + 32;
-      else if (to.id === 'k') return baseVal + 273.15;
+        if (to.id === 'c') return baseVal;
+        else if (to.id === 'f') return baseVal * (9/5) + 32;
+        else if (to.id === 'k') return baseVal + 273.15;
+        return 0;
+      }
+
+      // Standard conversion: val * fromFactor / toFactor
+      // baseVal = val * fromFactor
+      // result = baseVal / toFactor
+      return (val * from.factor) / to.factor;
+    } catch (error) {
+      console.warn('Error calculating conversion result:', error);
       return 0;
     }
-
-    // Standard conversion: val * fromFactor / toFactor
-    // baseVal = val * fromFactor
-    // result = baseVal / toFactor
-    return (val * from.factor) / to.factor;
   }, [category, fromUnit, toUnit, value]);
 
   const handleConvert = () => {
-    const newResult: ConversionResult = {
-      from: fromUnit,
-      to: toUnit,
-      value: parseFloat(value),
-      result,
-      timestamp: Date.now(),
-    };
-    setRecent(prev => [newResult, ...prev.slice(0, 19)]);
+    try {
+      const newResult: ConversionResult = {
+        from: fromUnit,
+        to: toUnit,
+        value: parseFloat(value),
+        result,
+        timestamp: Date.now(),
+      };
+      setRecent(prev => [newResult, ...prev.slice(0, 19)]);
+    } catch (error) {
+      console.warn('Error handling conversion:', error);
+    }
   };
 
   const toggleFavorite = () => {
@@ -143,10 +178,14 @@ export default function App() {
         </div>
       ) : (
         favorites.map((fav, i) => {
-          const [cat, from, to] = fav.split(':');
+          const parts = fav.split(':');
+          if (parts.length !== 3) return null;
+          const [cat, from, to] = parts;
           const units = UNITS[cat as UnitCategory];
+          if (!units) return null;
           const fromU = units.find(u => u.id === from);
           const toU = units.find(u => u.id === to);
+          if (!fromU || !toU) return null;
           return (
             <button 
               key={i} 
@@ -172,7 +211,7 @@ export default function App() {
               <Star size={16} className="text-yellow-400 fill-yellow-400" />
             </button>
           );
-        })
+        }).filter(Boolean)
       )}
     </div>
   );

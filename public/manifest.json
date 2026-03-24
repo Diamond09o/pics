@@ -3,8 +3,8 @@
   "short_name": "Omni",
   "id": "com.omniconverter.app",
   "description": "OmniConverter is an easy and fast way to convert whatever you want, making your daily life simpler.",
-  "start_url": "/",
-  "scope": "/",
+  "start_url": "/pics/",
+  "scope": "/pics/",
   "display": "standalone",
   "display_override": [
     "standalone",

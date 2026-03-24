@@ -1,10 +1,10 @@
 const CACHE_NAME = 'omni-converter-v1';
 const CORE_ASSETS = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/pics/icon-192x192.png',
-  '/pics/icon-512x512.png',
+  '/pics/',
+  '/pics/index.html',
+  '/pics/manifest.json',
+  '/pics/pics/icon-192x192.png',
+  '/pics/pics/icon-512x512.png',
 ];
 
 self.addEventListener('install', (event) => {
@@ -48,7 +48,7 @@ self.addEventListener('fetch', (event) => {
         .catch(() => {
           // Offline fallback for navigation requests.
           if (event.request.mode === 'navigate') {
-            return caches.match('/index.html');
+            return caches.match('/pics/index.html');
           }
         });
     })
