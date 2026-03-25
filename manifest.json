@@ -77,12 +77,12 @@
   "shortcuts": [
     {
       "name": "Length Converter",
-      "url": "/",
+      "url": "/pics/",
       "description": "Quickly convert length units"
     },
     {
       "name": "Recent Conversions",
-      "url": "/#recent",
+      "url": "/pics/#recent",
       "description": "View your recent conversions"
     }
   ]
