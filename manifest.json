@@ -13,15 +13,6 @@
     "fullscreen",
     "window-controls-overlay"
   ],
-  "launch_handler": {
-    "client_mode": "focus-existing"
-  },
-  "protocol_handlers": [
-    {
-      "protocol": "web+omni",
-      "url": "/pics/?q=%s"
-    }
-  ],
   "lang": "en",
   "dir": "ltr",
   "theme_color": "#007bff",
@@ -51,20 +42,12 @@
     {
       "src": "pics/task_01kkr5rbchez4bq2c1dykx9hb1_1773559128_img_0.webp",
       "sizes": "1024x1536",
-      "type": "image/webp",
-      "form_factor": "narrow"
+      "type": "image/webp"
     },
     {
       "src": "pics/task_01kkr5rbchez4bq2c1dykx9hb1_1773559128_img_1.webp",
       "sizes": "1024x1536",
-      "type": "image/webp",
-      "form_factor": "narrow"
-    },
-    {
-      "src": "pics/image-544bef4a-673a-4622-a093-e0392d22c070.jpg",
-      "sizes": "512x288",
-      "type": "image/jpeg",
-      "form_factor": "wide"
+      "type": "image/webp"
     }
   ],
   "categories": [
@@ -77,12 +60,12 @@
   "shortcuts": [
     {
       "name": "Length Converter",
-      "url": "/pics/",
+      "url": "/",
       "description": "Quickly convert length units"
     },
     {
       "name": "Recent Conversions",
-      "url": "/pics/#recent",
+      "url": "/#recent",
       "description": "View your recent conversions"
     }
   ]
