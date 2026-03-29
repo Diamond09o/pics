@@ -188,4 +188,4 @@ Error generating stack: `+i.message+`
           -ms-overflow-style: none;
           scrollbar-width: none;
         }
-      `})]})}rb.createRoot(document.getElementById("root")).render(V.jsx(K.StrictMode,{children:V.jsx(ZA,{})}));
+      `})]})}"serviceWorker"in navigator&&window.addEventListener("load",()=>{navigator.serviceWorker.register("/pics/service-worker.js").catch(()=>{})});rb.createRoot(document.getElementById("root")).render(V.jsx(K.StrictMode,{children:V.jsx(ZA,{})}));
