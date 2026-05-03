@@ -1,0 +1,49 @@
+{
+  "appVersion": "1.0.0",
+  "appVersionCode": 1,
+  "backgroundColor": "#f5f5f5",
+  "display": "standalone",
+  "enableNotifications": true,
+  "enableSiteSettingsShortcut": true,
+  "fallbackType": "customtabs",
+  "features": {
+    "locationDelegation": {
+      "enabled": true
+    },
+    "playBilling": {
+      "enabled": false
+    }
+  },
+  "host": "https://diamond09o.github.io",
+  "iconUrl": "https://diamond09o.github.io/pics/pics/icon-512x512.png",
+  "maskableIconUrl": "https://diamond09o.github.io/pics/pics/icon-512x512.png",
+  "monochromeIconUrl": "https://diamond09o.github.io/pics/pics/icon-512x512.png",
+  "includeSourceCode": false,
+  "isChromeOSOnly": false,
+  "launcherName": "Omni",
+  "name": "OmniConverter",
+  "navigationColor": "#007bff",
+  "navigationColorDark": "#007bff",
+  "navigationDividerColor": "#007bff",
+  "navigationDividerColorDark": "#007bff",
+  "orientation": "portrait",
+  "packageId": "com.omniconverter.app",
+  "shortcuts": [],
+  "signing": {
+    "file": null,
+    "alias": "omni-key-alias",
+    "fullName": "Omni Developer",
+    "organization": "OmniConverter",
+    "organizationalUnit": "Engineering",
+    "countryCode": "US",
+    "keyPassword": "",
+    "storePassword": ""
+  },
+  "signingMode": "new",
+  "splashScreenFadeOutDuration": 300,
+  "startUrl": "/",
+  "themeColor": "#007bff",
+  "themeColorDark": "#007bff",
+  "shareTarget": [],
+  "webManifestUrl": "https://diamond09o.github.io/pics/manifest.json"
+}
